@@ -4,16 +4,27 @@ from rest_framework.response import Response
 from .models import Product
 from .serializers import ProductSerializer
 from .filters import ProductFilter
+from rest_framework.pagination import PageNumberPagination
 # Create your views here.
 
 @api_view(['GET'])
 def get_products(request):
 
     filterset = ProductFilter(request.GET, queryset=Product.objects.all().order_by('id'))
+    count = filterset.qs.count()
 
-    serializer = ProductSerializer(filterset.qs, many=True)
+    # Pagination
+    perpage = 1
+    paginator = PageNumberPagination()
+    paginator.page_size = perpage
+    queryset = paginator.paginate_queryset(filterset.qs, request)
+    serializer = ProductSerializer(queryset, many=True)
 
-    return Response({"products": serializer.data})
+    return Response({
+        "count": count,
+        "perpage": perpage,
+        "products": serializer.data
+        })
 
 
 
