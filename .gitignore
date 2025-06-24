@@ -1,0 +1,42 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+
+# Django
+db.sqlite3
+*.log
+
+# Environments
+.env
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Migrations (optional, if you don't want to track migration files)
+# **/migrations/*.py
+# **/migrations/*.pyc
+
+# Static/media
+/staticfiles/
+/media/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# Other
+*.bak
+*.swp
+*.tmp
