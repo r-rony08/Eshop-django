@@ -31,9 +31,9 @@ def custom_exception_handler(exc, context):
         response.data = error_payload
         return response
     
-    else:
-        error = {
-            "error":"somthing Went Wrong"
-        }
+    # else:
+    #     error = {
+    #         "error":"somthing Went Wrong"
+    #     }
 
         return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
