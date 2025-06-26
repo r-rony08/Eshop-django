@@ -6,7 +6,7 @@ from product.models import Product
 class OrderStatus(models.TextChoices):
     PROCESSING = 'processing'
     SHIPPED = 'shipped'
-    DELIVERD = 'deliverd'
+    DELIVERED = 'delivered'
 
 class PaymentStatus(models.TextChoices):
     PAID = "PAID"
