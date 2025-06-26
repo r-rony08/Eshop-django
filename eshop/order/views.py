@@ -8,6 +8,8 @@ from .filters import *
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+import stripe, os
+from utils.helpers import get_current_host
 
 # Create your views here.
 
@@ -107,3 +109,7 @@ def delete_order(request, pk):
     serializers = OrderSerializer(orders, many=False)
     return Response({'Details': 'Order is deleted'})
 
+
+stripe.api_key = os.environ.get("STRIPE_PRIVATE_KEY")
+#YOUR_DOMAIN = get_current_host()
+YOUR_DOMAIN = 'http://127.0.0.1:8000/'
